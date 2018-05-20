@@ -1,0 +1,89 @@
+body {
+    background-color: #212F3C;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-family: "Lucida Console", Monaco, monospace;
+    text-decoration: underline overline;
+    text-decoration-color: #dc3545;
+}
+
+.carousel-item div img {
+    height: 25%;
+    width: 25%;
+    border: 2px solid black;
+}
+
+.carousel-item div img:hover {
+    height: 28%;
+    width: 28%;
+    border: 4px solid #dc3545;
+}
+
+#carouselActionControls {
+    margin-top: 5vh;
+}
+
+.contact {
+  width: 100%;
+  color: #E0E0E0;
+  background-color: #404040;;
+  border: 3px solid #C0C0C0;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+#movieModal .modal-content,
+#movieSearchModal .modal-content {
+    background-color: black;
+}
+
+#movieModal .modal-footer a {
+    font-size: 20px;
+    font-family: monospace;
+    text-decoration-color: #dc3545;
+}
+
+.tabContent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.tabContent img {
+    display: none;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@media only screen and (max-width: 500px) {
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .carousel-item div img {
+        height: 80px;
+        width: 60px;
+    }   
+
+    .carousel-item div img:hover {
+        height: 90px;
+        width: 70px;
+    }
+
+    #movieModal .modal-footer a {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,491 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Movie Reviews</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+	  <a class="navbar-brand text-warning" href="index.html"><img src="reel.png" style="width: 150px; height: 50px;"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          <i class="fas fa-film"></i> Movie Genre
+	        </a>
+	        <div id="dropdown-menu1" class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+	        	<a class="dropdown-item text-danger font-weight-bold" href="#carouselDramaControls">All</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselDramaControls">Drama</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselComedyControls">Comedy</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselActionControls">Action</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselThrillerControls">Thriller</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselRomanticControls">Romantic</a>
+	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselHorrorControls">Horror</a>
+	        </div>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i> Contact Us</a>
+	      </li>	      
+	    </ul>
+    	<ul class="navbar-nav ml-auto">
+	      	<li class="nav-item dropdown">
+	        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search Criteria</a>
+		        <div id="dropdown-menu2" class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown2">
+		        	<a class="dropdown-item text-danger font-weight-bold" href="#imdbID">IMDb ID</a>
+		          	<a class="dropdown-item text-danger font-weight-bold" href="#movieTitle">Title, Year</a>
+		        </div>
+	      	</li>
+	     </ul>	    
+	    <form class="form-inline d-md-flex mt-3 my-md-0 justify-content-md-end">
+	      	<input id="imdbID" class="form-control d-none w-75 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="IMDb Id" aria-label="Search">
+	      	<input id="movieTitle" class="form-control d-none w-25 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="Title">
+	      	<input id="movieYear" class="form-control d-none w-25 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="Year">	      		      	
+	      	<button class="btn btn-lg btn-outline-warning" type="submit" data-toggle="modal" data-target="#movieSearchModal"><i class="fas fa-search"></i></button>	      	
+	    </form>
+	  </div>
+	</nav>
+
+	<div class="modal fade" id="movieSearchModal" tabindex="-1" role="dialog" aria-labelledby="movieSearchModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+	    	<div class="modal-content">
+		      	<div class="modal-header border-0 pb-0 m-0">
+		        	<h3 class="modal-title text-light" id="movieSearchModalLabel">About</h3>
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button>
+		    	</div>
+		    	<div class="modal-body border-0 pt-0">
+		    		<div class="row mt-2 mt-md-0">
+		    			<div class="col-12 d-flex flex-wrap d-md-inline-flex flex-md-nowrap">
+		    				<p id="desc" class="text-warning">Desc</p>
+		    			</div>
+		    		</div>
+		    		<div class="row mt-4">
+						<div id="poster" class="col-12 col-md-5 mb-4">
+							<img src="no-image.png" class="img-fluid"/>
+						</div>
+						<div class="col-12 col-md-7">
+							<div class="row d-flex">
+								<div class="col-4 col-md-2">
+									<img src="IMDB.png" style="width: 50px; height: 40px;">
+									<p id="imdb" class="text-success">0/0</p>
+								</div>
+								<div class="col-4 col-md-2">
+									<img src="rotten-tomatoes.png" style="width: 60px; height: 40px;">
+									<p id="rotten-tomatoes" class="text-success"></p>
+								</div>
+								<div class="col-4 col-md-3">
+									<img src="Metacritic.png" style="width: 100px; height: 40px;">
+									<p id="metacritic" class="text-success"></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<p id="plot" class="text-danger">Plot</p>
+								</div>
+							</div>
+						</div>						
+					</div>
+		    	</div>
+	    	</div>
+		</div>
+	</div>	
+
+	<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header bg-danger border-0">
+	        <h5 class="modal-title text-warning" id="contactModalLabel"><i class="fas fa-envelope"></i> Contact Us</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body border-0">
+            <form>
+                <input type="text" name="name" class = "contact" size = "27" placeholder = "Enter Your Name"><br>
+                <input type="email" name="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class = "contact" size = "27" placeholder = "default@example.com"><br>
+                <textarea name="text" cols="25" rows="5" placeholder = "Drop your message here..!!" class="contact"></textarea>
+            </form>
+	      </div>
+	      <div class="modal-footer bg-danger border-0">
+	        <button type="button" class="btn btn-warning">
+	        	<a target="_blank" href = "mailto:dgoel27@yahoo.com?subject=Hey There" style="text-decoration: none;" class="text-dark">Submit</a>
+	        </button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+ 	<div class="container-fluid mt-5">		
+		<div id="carouselActionControls" class="carousel slide py-3 py-md-5" data-ride="carousel">
+			<h2 class="text-warning p-1 text-center">ACTION</h2>			
+			<div class="carousel-inner">
+			    <div class="carousel-item active">
+			    	<div class="d-flex">
+				        <img class="mx-1" src="Images/Action 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				    </div>    	      
+			    </div>
+			    <div class="carousel-item">
+			    	<div class="d-flex">
+				        <img class="mx-1" src="Images/Action 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				        <img class="mx-1" src="Images/Action 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+				    </div>    	      
+			    </div>	    
+			    <a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselActionControls" role="button" data-slide="prev">
+			    	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    	<span class="sr-only">Previous</span>
+  			    </a>
+			    <a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselActionControls" role="button" data-slide="next">
+			    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    	<span class="sr-only">Next</span>
+			    </a>
+			</div>
+		</div>
+	</div>	  
+
+ 	<div class="container-fluid">  		
+		<div id="carouselComedyControls" class="carousel slide py-3 py-md-5" data-ride="carousel">		
+			<h2 class="text-warning p-1 text-center">COMEDY</h2>			
+		    <div class="carousel-inner">	    
+		    	<div class="carousel-item active">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Comedy 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>    	      	      	      	      	      	      	      	      	      
+		    	</div>
+		    	<div class="carousel-item">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Comedy 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Comedy 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>    	      	      	      	      	      	      	      	      	      
+		    	</div>	    
+		  		<a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselComedyControls" role="button" data-slide="prev">
+		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Previous</span>
+		  		</a>
+		  		<a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselComedyControls" role="button" data-slide="next">
+		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Next</span>
+		  		</a>
+		  	</div>
+		</div>		
+	</div>
+
+ 	<div class="container-fluid">		
+		<div id="carouselDramaControls" class="carousel slide py-3 py-md-5" data-ride="carousel">
+			<h2 class="text-warning p-1 text-center">DRAMA</h2> 			
+		  	<div class="carousel-inner">	    
+		    	<div class="carousel-item active">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Drama 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>    
+		    	</div>
+		    	<div class="carousel-item">
+			    	<div class="d-flex">
+				      	<img class="mx-1" src="Images/Drama 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Drama 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>    
+		    	</div>	    
+		  		<a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselDramaControls" role="button" data-slide="prev">
+		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Previous</span>
+		  		</a>
+		  		<a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselDramaControls" role="button" data-slide="next">
+		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Next</span>
+		  		</a>
+			</div>
+		</div>
+	</div>	    
+
+ 	<div class="container-fluid">	
+		<div id="carouselRomanticControls" class="carousel slide py-3 py-md-5" data-ride="carousel">		
+			<h2 class="text-warning p-1 text-center">ROMANTIC</h2> 				
+		  	<div class="carousel-inner">	    
+		    	<div class="carousel-item active">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Romantic 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>
+		    	<div class="carousel-item">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Romantic 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Romantic 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>	    
+		  		<a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselRomanticControls" role="button" data-slide="prev">
+		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Previous</span>
+		  		</a>
+		  		<a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselRomanticControls" role="button" data-slide="next">
+		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Next</span>
+		  		</a>
+		  	</div>
+		</div>
+	</div>	    
+
+ 	<div class="container-fluid">
+		<div id="carouselThrillerControls" class="carousel slide py-3 py-md-5" data-ride="carousel">	
+			<h2 class="text-warning p-1 text-center">THRILLER</h2>			
+		  	<div class="carousel-inner">	    
+		    	<div class="carousel-item active">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Thriller 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>
+		    	<div class="carousel-item">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Thriller 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Thriller 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>	    
+		  		<a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselThrillerControls" role="button" data-slide="prev">
+		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Previous</span>
+		  		</a>
+		  		<a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselThrillerControls" role="button" data-slide="next">
+		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Next</span>
+		  		</a>
+		  	</div>
+		</div>
+	</div>  
+
+ 	<div class="container-fluid">		
+		<div id="carouselHorrorControls" class="carousel slide py-3 py-md-5" data-ride="carousel">		
+			<h2 class="text-warning p-1 text-center">HORROR</h2>			
+		  	<div class="carousel-inner">	    
+		    	<div class="carousel-item active">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Horror 1.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 2.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 3.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 4.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 5.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>	   
+		    	<div class="carousel-item">
+		    		<div class="d-flex">
+			      		<img class="mx-1" src="Images/Horror 6.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 7.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 8.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 9.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			      		<img class="mx-1" src="Images/Horror 10.JPG" alt="No Preview" data-toggle="modal" data-target="#movieModal">
+			    	</div>
+		    	</div>		    	 	    
+		  		<a class="carousel-control-prev h-25 mt-5 align-items-end" href="#carouselHorrorControls" role="button" data-slide="prev">
+		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Previous</span>
+		  		</a>
+		  		<a class="carousel-control-next h-25 mt-5 align-items-end" href="#carouselHorrorControls" role="button" data-slide="next">
+		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    		<span class="sr-only">Next</span>
+		  		</a>
+		  	</div>
+		</div>
+	</div>
+
+	<div class="modal" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+	    	<div class="modal-content">
+		      	<div class="modal-header m-0 border-0">
+		        	<h5 class="modal-title" id="movieModalLabel"></h5>
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          		<span aria-hidden="true">&times;</span>
+		        	</button>
+		    	</div>
+		    	<div class="modal-body p-0 m-0 border-0">
+					<div id="overview" class="tabContent p-0 m-0">
+						<img src="Images/Action 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 10-1.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Comedy 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 10-1.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Thriller 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 10-1.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Romantic 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 10-1.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Drama 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 10-1.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Horror 1-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 2-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 3-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 4-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 5-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 6-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 7-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 8-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 9-1.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 10-1.JPG" alt="No Preview" class="w-100">										
+					</div>
+					<div id="details" class="tabContent">
+						<img src="Images/Action 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Action 10-2.JPG" alt="No Preview" class="w-100">	
+
+						<img src="Images/Horror 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Horror 10-2.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Comedy 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Comedy 10-2.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Romantic 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Romantic 10-2.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Drama 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Drama 10-2.JPG" alt="No Preview" class="w-100">
+
+						<img src="Images/Thriller 1-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 2-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 3-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 4-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 5-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 6-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 7-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 8-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 9-2.JPG" alt="No Preview" class="w-100">
+						<img src="Images/Thriller 10-2.JPG" alt="No Preview" class="w-100">								
+					</div>
+		    	</div>
+		    	<div class="modal-footer m-0 border-0">
+		        	<a class="tabLink mr-4 text-light" href="#overview">Overview</a>
+		        	<a class="tabLink text-light" href="#details">Details</a>
+		    	</div>
+	    	</div>
+		</div>
+	</div>					
+
+	<!-- External Scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
