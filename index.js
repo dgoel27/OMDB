@@ -123,7 +123,7 @@ let getAllDetails = () => {
         type: 'GET',
         dataType: 'json',
         async: true,
-        url: 'http://www.omdbapi.com/?apikey=ca2cf604&i=tt3896198',
+        url: 'https://www.omdbapi.com/?apikey=ca2cf604&i=tt3896198',
         // url: 'http://www.omdbapi.com/?apikey=' + omdbToken + '&i=tt3896198',
         success: (response) => {
 
