@@ -79,6 +79,7 @@ $(document).ready(() => {
             } 
         }
         $('.container-fluid').css('opacity','0.1');
+        $("#movieModal .modal-footer").find($("a.tabLink")[0]).css("textDecorationLine", "underline");
     })
 
     $("a.tabLink").click(function() {
