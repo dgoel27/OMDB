@@ -14,7 +14,7 @@
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
+	    <ul class="navbar-nav mr-auto d-flex">
 	      <li class="nav-item">
 	        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
 	      </li>
@@ -31,12 +31,9 @@
 	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselRomanticControls">Romantic</a>
 	          	<a class="dropdown-item text-danger font-weight-bold" href="#carouselHorrorControls">Horror</a>
 	        </div>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i> Contact Us</a>
-	      </li>	      
+	      </li>     
 	    </ul>
-    	<ul class="navbar-nav ml-auto">
+    	<ul class="navbar-nav ml-auto d-flex justify-content-lg-end">
 	      	<li class="nav-item dropdown">
 	        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search Criteria</a>
 		        <div id="dropdown-menu2" class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown2">
@@ -44,13 +41,22 @@
 		          	<a class="dropdown-item text-danger font-weight-bold" href="#movieTitle">Title, Year</a>
 		        </div>
 	      	</li>
-	     </ul>	    
-	    <form class="form-inline d-md-flex mt-3 my-md-0 justify-content-md-end">
-	      	<input id="imdbID" class="form-control d-none w-75 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="IMDb Id" aria-label="Search">
-	      	<input id="movieTitle" class="form-control d-none w-25 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="Title">
-	      	<input id="movieYear" class="form-control d-none w-25 mr-2 bg-dark text-warning border border-warning" type="search" placeholder="Year">	      		      	
-	      	<button class="btn btn-lg btn-outline-warning" type="submit" data-toggle="modal" data-target="#movieSearchModal"><i class="fas fa-search"></i></button>	      	
-	    </form>
+	      	<li class="nav-item mt-2 mt-md-0">
+	      		<input id="imdbID" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="IMDb Id" aria-label="Search" required />
+	      	</li>
+	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
+	      		<input id="movieTitle" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Title" required />
+	      	</li>
+	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
+	      		<input id="movieYear" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Year">	      		      	
+	      	</li>
+	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
+	      		<button id="search-button" class="btn d-none btn-lg btn-outline-warning" type="submit" data-toggle="modal" data-target="#movieSearchModal" disabled /><i class="fas fa-search"></i></button>
+	      	</li>
+	      	<li class="nav-item">
+	        	<a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal"><i class="fas fa-envelope"></i> Contact Us</a>
+	        </li>
+	     </ul>
 	  </div>
 	</nav>
 
@@ -93,6 +99,17 @@
 									<p id="plot" class="text-danger">Plot</p>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<p class="text-info">
+										<i class="fas fa-share-alt mr-1"></i><b><u>Share</u> : </b>
+										<a target="_blank" href = "mailto:dgoel27@yahoo.com?subject=Hey There&body=https://dgoel27.github.io/OMDB/"><i class="fas fa-envelope mx-2"></i></a>
+										<a target="_blank" href = "https://www.twitter.com/share?url=https://dgoel27.github.io/OMDB/"><i class="fab fa-twitter-square mr-2"></i></a>
+										<a target="_blank" href = "http://www.facebook.com/sharer.php?u=https://dgoel27.github.io/OMDB/"><i class="fab fa-facebook-square mr-2"></i></a>										
+										<a target="_blank" href = "https://api.whatsapp.com/send?phone=whatsappphonenumber&text=https://dgoel27.github.io/OMDB/"><i class="fab fa-whatsapp-square"></i></a>										
+									</p>
+								</div>
+							</div>							
 						</div>						
 					</div>
 		    	</div>
@@ -117,9 +134,7 @@
             </form>
 	      </div>
 	      <div class="modal-footer bg-danger border-0">
-	        <button type="button" class="btn btn-warning">
-	        	<a target="_blank" href = "mailto:dgoel27@yahoo.com?subject=Hey There" style="text-decoration: none;" class="text-dark">Submit</a>
-	        </button>
+	        <button type="button" class="btn btn-warning" data-dismiss="modal">Submit</button>
 	      </div>
 	    </div>
 	  </div>

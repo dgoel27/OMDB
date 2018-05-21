@@ -1,14 +1,10 @@
 // main document ready function to check if dom is loaded fully or not
 
-let omdbToken;
+let omdbToken, token_url;
 
 $(document).ready(() => {
 
-    let var_id;
-    let src_split;
-    let final_img;
-    let img_src;
-    let carousel_id;
+    let var_id, src_split, final_img, img_src, criteriaFlag = 0, search_criteria, timer = null, lastValue = '';
 
     $("#dropdown-menu1 a.dropdown-item").click(function() {
 
@@ -37,17 +33,40 @@ $(document).ready(() => {
     })
 
     $("#dropdown-menu2 a.dropdown-item").click(function() {
+        $('#search-button').removeClass('d-none');       
 
         if($(this).text() == 'IMDb ID') {
             $("#imdbID").removeClass('d-none');
             $("#movieTitle").addClass('d-none');
-            $("#movieYear").addClass('d-none');        
+            $("#movieYear").addClass('d-none'); 
+            criteriaFlag = 1;
         } else {
             $("#movieTitle").removeClass('d-none');
             $("#movieYear").removeClass('d-none');
             $("#imdbID").addClass('d-none'); 
+            criteriaFlag = 2;
         }
-    })    
+
+        if($(window).width() >= 1000 && $(window).width() <= 1127) {
+            document.getElementById('navbarDropdown2').innerHTML = 'Criteria';
+            document.getElementById('navbarDropdown').innerHTML = 'Genre';
+        }
+    })   
+
+    $('.form-control').keydown(function() {
+        clearTimeout(timer);
+        timer = setTimeout( function() {
+            if(criteriaFlag == 1) {
+                 search_criteria = document.getElementById('imdbID').value;
+            } else {
+                search_criteria = document.getElementById('imdbID').value;
+            }  
+            if($(this).val != '' && $(this).val != lastValue){
+                token_url = 'https://www.omdbapi.com/?apikey=ca2cf604&i=' + search_criteria;
+                getAllDetails();
+            }
+        }, 500);
+    });      
 
     $(".carousel-item div img").click(function() {
         $(".modal-footer a").css("display", "flex");
@@ -97,7 +116,7 @@ $(document).ready(() => {
         $('.container-fluid').css('opacity','1');
     })
 
-    $('.form-inline button').click(() => {
+    $('#search-button').click(() => {
         $('.container-fluid').css('opacity','0.1');
     })    
 
@@ -105,12 +124,16 @@ $(document).ready(() => {
         $('.container-fluid').css('opacity','1');
     })    
 
+    $('#contactModal .modal-footer button').click(() => {
+        alert("Your message has been submitted..!!");
+    })
+
     // omdbToken = prompt("Please enter your OMDb Token:", "");
     // if (omdbToken == null || omdbToken == "") {
     //     alert("No user Token found");
     // } else {
 
-        getAllDetails();
+        // getAllDetails();
 
    // } // end if condition
 
@@ -123,20 +146,30 @@ let getAllDetails = () => {
         type: 'GET',
         dataType: 'json',
         async: true,
-        url: 'https://www.omdbapi.com/?apikey=ca2cf604&i=tt3896198',
-        // url: 'http://www.omdbapi.com/?apikey=' + omdbToken + '&i=tt3896198',
+        url: token_url,
+        // url: 'https://www.omdbapi.com/?apikey=' + omdbToken + '&i=tt3896198',
         success: (response) => {
 
             console.log(response);
+            if(response.Error != '' && response.Error != undefined) {
+                $('#search-button').attr('disabled','disabled');
+                alert(response.Error);
+            } else {
+                $('#search-button').removeAttr('disabled');
+            }
 
             document.getElementById('movieSearchModalLabel').innerHTML = response.Title 
             + "&nbsp;<span class=\"text-warning\" style=\"font-weight: lighter;font-size: 20px;\">(" + response.Year + ")</span>";   
 
             document.getElementById('desc').innerHTML = "<small>" + response.Rated + "&nbsp;&nbsp;|&nbsp;&nbsp;" +
             response.Runtime + "&nbsp;&nbsp;|&nbsp;&nbsp;" + response.Genre + "&nbsp;&nbsp;|&nbsp;&nbsp;" + response.Released + 
-            "&nbsp;(" + response.Country + ")&nbsp;&nbsp;|&nbsp;&nbsp;" + response.Language + "</small>";   
+            "&nbsp;(" + response.Country + ")&nbsp;&nbsp;|&nbsp;&nbsp;" + response.Language + "</small>";  
 
-            $('#poster').html('<img src="' + response.Poster + '" class="img-fluid"/>');       
+            if(response.Poster == '' || response.Poster == undefined) {
+                $('#poster').html('<img src="no-image.png" class="img-fluid"/>');       
+            } else {
+                $('#poster').html('<img src="' + response.Poster + '" class="img-fluid"/>');
+            }
 
             document.getElementById('imdb').innerHTML = "<b>" + response.imdbRating + "</b><small style=\"font-size:10px;\">/10<br>" 
             + response.imdbVotes + "<small>";
@@ -154,7 +187,7 @@ let getAllDetails = () => {
         }, 
             error: (err) => {
             console.log(err.responseJSON.error.message);
-            alert(err.responseJSON.error.message)
+            alert(err.responseJSON.error.message);
         }
     });// end ajax call 
 }
