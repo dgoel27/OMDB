@@ -30,7 +30,7 @@ $(document).ready(() => {
 
             }
         }
-    })
+    });
 
     $("#dropdown-menu2 a.dropdown-item").click(function() {
         $('#search-button').removeClass('d-none');       
@@ -53,19 +53,35 @@ $(document).ready(() => {
         }
     })   
 
-    $('.form-control').keydown(function() {
-        clearTimeout(timer);
-        timer = setTimeout( function() {
-            if(criteriaFlag == 1) {
-                 search_criteria = document.getElementById('imdbID').value;
-            } else {
-                search_criteria = document.getElementById('imdbID').value;
-            }  
-            if($(this).val != '' && $(this).val != lastValue){
-                token_url = 'https://www.omdbapi.com/?apikey=ca2cf604&i=' + search_criteria;
-                getAllDetails();
-            }
-        }, 500);
+    // $('.form-control').keydown(function() {
+    //     clearTimeout(timer);
+    //     timer = setTimeout( function() {
+    //         if(criteriaFlag == 1) {
+    //              search_criteria = document.getElementById('imdbID').value;
+    //         } else {
+    //             search_criteria = document.getElementById('imdbID').value;
+    //         }  
+    //         if($(this).val != '' && $(this).val != lastValue){
+    //             token_url = 'https://www.omdbapi.com/?apikey=ca2cf604&i=' + search_criteria;
+    //             getAllDetails();
+    //         }
+    //     }, 500);
+    // });    
+
+    $('.form-control').mouseout(function() {
+
+        if(criteriaFlag == 1) {
+             search_criteria = document.getElementById('imdbID').value;
+        } else {
+            search_criteria = document.getElementById('imdbID').value;
+        }  
+
+        if($(this).val() != '' && $(this).val() != lastValue){
+            lastValue = $(this).val();
+            token_url = 'https://www.omdbapi.com/?apikey=ca2cf604&i=' + search_criteria;
+            getAllDetails();
+        }
+
     });      
 
     $(".carousel-item div img").click(function() {
@@ -124,6 +140,8 @@ $(document).ready(() => {
     $('#movieSearchModal .close').click(() => {
         $('.container-fluid').css('opacity','1');
     })    
+
+    //$('#contactModal .modal-body .contact')[0]
 
     $('#contactModal .modal-footer button').click(() => {
         alert("Your message has been submitted..!!");
