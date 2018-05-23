@@ -42,13 +42,13 @@
 		        </div>
 	      	</li>
 	      	<li class="nav-item mt-2 mt-md-0">
-	      		<input id="imdbID" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="IMDb Id" aria-label="Search" required />
+	      		<input id="imdbID" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="IMDb Id" value="" aria-label="Search" required />
 	      	</li>
 	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
-	      		<input id="movieTitle" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Title" required />
+	      		<input id="movieTitle" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Title" value="" required />
 	      	</li>
 	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
-	      		<input id="movieYear" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Year">	      		      	
+	      		<input id="movieYear" class="form-control d-none bg-dark text-warning border border-warning" type="search" placeholder="Year" value="">	      		      	
 	      	</li>
 	      	<li class="nav-item mr-md-2 mb-2 mb-md-0">
 	      		<button id="search-button" class="btn d-none btn-lg btn-outline-warning" type="submit" data-toggle="modal" data-target="#movieSearchModal" disabled /><i class="fas fa-search"></i></button>
@@ -64,7 +64,7 @@
 	  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    	<div class="modal-content">
 		      	<div class="modal-header border-0 pb-0 m-0">
-		        	<h3 class="modal-title text-light" id="movieSearchModalLabel">About</h3>
+		        	<h3 class="modal-title text-light" id="movieSearchModalLabel"></h3>
 		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          		<span aria-hidden="true">&times;</span>
 		        	</button>
@@ -72,7 +72,7 @@
 		    	<div class="modal-body border-0 pt-0">
 		    		<div class="row mt-2 mt-md-0">
 		    			<div class="col-12 d-flex flex-wrap d-md-inline-flex flex-md-nowrap">
-		    				<p id="desc" class="text-warning">Desc</p>
+		    				<p id="desc" class="text-warning"></p>
 		    			</div>
 		    		</div>
 		    		<div class="row mt-4">
@@ -83,7 +83,7 @@
 							<div class="row d-flex">
 								<div class="col-4 col-md-2">
 									<img src="IMDB.png" style="width: 50px; height: 40px;">
-									<p id="imdb" class="text-success">0/0</p>
+									<p id="imdb" class="text-success"></p>
 								</div>
 								<div class="col-4 col-md-2">
 									<img src="rotten-tomatoes.png" style="width: 60px; height: 40px;">
@@ -95,12 +95,12 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
-									<p id="plot" class="text-danger">Plot</p>
+								<div class="col-12">
+									<p id="plot" class="text-danger"></p>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-12">
 									<p class="text-info">
 										<i class="fas fa-share-alt mr-1"></i><b><u>Share</u> : </b>
 										<a target="_blank" href = "mailto:dgoel27@yahoo.com?subject=Hey There&body=https://dgoel27.github.io/OMDB/"><i class="fas fa-envelope mx-2"></i></a>
@@ -128,13 +128,13 @@
 	      </div>
 	      <div class="modal-body border-0">
             <form>
-                <input type="text" name="name" class = "contact" size = "27" placeholder = "Enter Your Name"><br>
-                <input type="email" name="emailid" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class = "contact" size = "27" placeholder = "default@example.com"><br>
-                <textarea name="text" cols="25" rows="5" placeholder = "Drop your message here..!!" class="contact"></textarea>
+                <input type="text" name="name" autocomplete="off" class = "contact" size = "27" placeholder = "Enter Your Name" value=""><br>
+                <input type="email" name="emailid" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class = "contact" size = "27" placeholder = "default@example.com" value=""><br>
+                <textarea class="contact" name="text" cols="25" rows="5" placeholder = "Drop your message here..!!"></textarea>
             </form>
 	      </div>
 	      <div class="modal-footer bg-danger border-0">
-	        <button type="button" class="btn btn-warning" data-dismiss="modal">Submit</button>
+	        <button type="button" class="btn btn-warning" data-dismiss="modal" disabled="disabled" data-toggle="popover" data-trigger="focus" title="Please fill in the details">Submit</button>
 	      </div>
 	    </div>
 	  </div>
