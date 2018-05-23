@@ -4,7 +4,12 @@ let omdbToken, token_url, eachElement;
 
 $(document).ready(() => {
 
-    let var_id, src_split, final_img, img_src, criteriaFlag = 0, search_criteria, timer = null, lastValue = '', alertMsg = '';
+    let var_id, src_split, final_img, img_src, criteriaFlag = 0, lastValue = '', alertMsg = '';
+
+    omdbToken = prompt("Please enter your OMDb Token:", "");
+    if (omdbToken == null || omdbToken == "") {
+        alert("No user Token found");
+    }  
 
     $("#dropdown-menu1 a.dropdown-item").click(function() {
 
@@ -54,19 +59,27 @@ $(document).ready(() => {
             document.getElementById('navbarDropdown2').innerHTML = 'Criteria';
             document.getElementById('navbarDropdown').innerHTML = 'Genre';
         }
+
+        console.log("criteriaFlag : " + criteriaFlag);
     })       
 
     $('.form-control').mouseout(function() {
 
         if(criteriaFlag == 1) {
-             search_criteria = document.getElementById('imdbID').value;
+             token_url = 'https://www.omdbapi.com/?apikey=' + omdbToken + '&i=' + document.getElementById('imdbID').value;
         } else {
-            search_criteria = document.getElementById('imdbID').value;
+            if($('#movieYear').val() == '') {
+                token_url = 'https://www.omdbapi.com/?apikey=' + omdbToken + '&t=' + document.getElementById('movieTitle').value;
+            } else {
+                token_url = 'https://www.omdbapi.com/?apikey=' + omdbToken + '&t=' + document.getElementById('movieTitle').value + 
+                '&y=' + document.getElementById('movieYear').value;
+            }
         }  
+
+        console.log("token_url : " + token_url);
 
         if($(this).val() != '' && $(this).val() != lastValue){
             lastValue = $(this).val();
-            token_url = 'https://www.omdbapi.com/?apikey=ca2cf604&i=' + search_criteria;
             document.getElementById('movieSearchModalLabel').innerHTML = '';
             document.getElementById('desc').innerHTML = '';
             document.getElementById('imdb').innerHTML = '';
@@ -186,15 +199,6 @@ $(document).ready(() => {
         $('#contactModal .modal-body input').val('');
     });    
 
-    // omdbToken = prompt("Please enter your OMDb Token:", "");
-    // if (omdbToken == null || omdbToken == "") {
-    //     alert("No user Token found");
-    // } else {
-
-        // getAllDetails();
-
-   // } // end if condition
-
 }); // end document.ready function
 
 let getAllDetails = () => {
@@ -205,7 +209,6 @@ let getAllDetails = () => {
         dataType: 'json',
         async: true,
         url: token_url,
-        // url: 'https://www.omdbapi.com/?apikey=' + omdbToken + '&i=tt3896198',
         success: (response) => {
 
             console.log(response);
