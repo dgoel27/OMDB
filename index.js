@@ -39,6 +39,7 @@ $(document).ready(() => {
 
     $("#dropdown-menu2 a.dropdown-item").click(function() {
         $('#search-button').removeClass('d-none');
+        $('#search-button').attr('disabled','disabled');
         $('#imdbID').val('');
         $('#movieTitle').val('');
         $('#movieYear').val('');       
@@ -213,7 +214,7 @@ let getAllDetails = () => {
 
             console.log(response);
 
-            if(response.Error != '' && response.Error != undefined) {
+            if(response.Error != '' && response.Error != undefined && response == null) {
                 $('#search-button').attr('disabled','disabled');
                 alert(response.Error);
             } else {
