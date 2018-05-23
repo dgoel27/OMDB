@@ -61,7 +61,6 @@ $(document).ready(() => {
             document.getElementById('navbarDropdown').innerHTML = 'Genre';
         }
 
-        console.log("criteriaFlag : " + criteriaFlag);
     })       
 
     $('.form-control').mouseout(function() {
@@ -153,7 +152,8 @@ $(document).ready(() => {
         if(!(/[a-zA-Z]+$/.test($('[name="name"]').val()))) {
             alert("You have entered an invalid name!");
             $('[name="emailid"]').attr('disabled','disabled');      
-            $('#contactModal .modal-body textarea').attr('disabled','disabled');      
+            $('#contactModal .modal-body textarea').attr('disabled','disabled');  
+            $('#contactModal .modal-footer button').attr('disabled','disabled');      
         } else {
             $('[name="emailid"]').removeAttr('disabled'); 
             $('#contactModal .modal-body textarea').removeAttr('disabled');
@@ -170,6 +170,7 @@ $(document).ready(() => {
             alert("You have entered an invalid email address!");
             $('#contactModal .modal-body textarea').attr('disabled','disabled');
             $('[name="name"]').attr('disabled','disabled');
+            $('#contactModal .modal-footer button').attr('disabled','disabled');  
         } else {
             $('#contactModal .modal-body textarea').removeAttr('disabled');
             $('[name="name"]').removeAttr('disabled'); 
@@ -180,7 +181,9 @@ $(document).ready(() => {
         if($('#contactModal .modal-body textarea').val() == '') {
             $('#contactModal .modal-footer button').attr('disabled','disabled');            
         } else {
-            $('#contactModal .modal-footer button').removeAttr('disabled'); 
+            if($('[name="name"]').val() != '' && $('[name="emailid"]').val() != '') {
+                $('#contactModal .modal-footer button').removeAttr('disabled'); 
+            }
         }
     })
 
