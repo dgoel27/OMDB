@@ -133,7 +133,7 @@ $(document).ready(() => {
         }
     })    
 
-    $('#movieModal .close').click(() => {
+    $('#movieModal').on("hidden.bs.modal", function () {
         $('.tabContent img').hide();
         $("#movieModal .modal-footer").find($("a.tabLink")[0]).css("textDecorationLine", "none");
         $("#movieModal .modal-footer").find($("a.tabLink")[1]).css("textDecorationLine", "none");
