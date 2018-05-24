@@ -144,7 +144,7 @@ $(document).ready(() => {
         $('.container-fluid').css('opacity','0.1');
     })    
 
-    $('#movieSearchModal .close').click(() => {
+    $('#movieSearchModal').on("hidden.bs.modal", function () {
         $('.container-fluid').css('opacity','1');
     })    
 
