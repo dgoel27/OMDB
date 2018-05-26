@@ -217,7 +217,7 @@ let getAllDetails = () => {
 
             console.log(response);
 
-            if(response.Error != '' && response.Error != undefined && response == null) {
+            if((response.Error != '' && response.Error != undefined) || response.Response == 'False' || response == null) {
                 $('#search-button').attr('disabled','disabled');
                 alert(response.Error);
             } else {
