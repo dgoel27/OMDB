@@ -133,7 +133,7 @@ $(document).ready(() => {
         }
     })    
 
-    $('#movieModal .close').click(() => {
+    $('#movieModal').on("hidden.bs.modal", function () {
         $('.tabContent img').hide();
         $("#movieModal .modal-footer").find($("a.tabLink")[0]).css("textDecorationLine", "none");
         $("#movieModal .modal-footer").find($("a.tabLink")[1]).css("textDecorationLine", "none");
@@ -144,7 +144,7 @@ $(document).ready(() => {
         $('.container-fluid').css('opacity','0.1');
     })    
 
-    $('#movieSearchModal .close').click(() => {
+    $('#movieSearchModal').on("hidden.bs.modal", function () {
         $('.container-fluid').css('opacity','1');
     })    
 
@@ -217,9 +217,9 @@ let getAllDetails = () => {
 
             console.log(response);
 
-            if(response.Error != '' && response.Error != undefined && response == null) {
+            if((response.Error != '' && response.Error != undefined) || response.Response == 'False' || response == null) {
                 $('#search-button').attr('disabled','disabled');
-                alert(response.Error);
+                alert(response.Response);
             } else {
                 $('#search-button').removeAttr('disabled');
             }
@@ -319,9 +319,9 @@ let getAllDetails = () => {
             }
 
         }, 
-            error: (err) => {
-            console.log(err.responseJSON.error.message);
-            alert(err.responseJSON.error.message);
+            error: (xhr, statusText, err) => {
+            console.log('xhr : ' + xhr + 'xhr.status : ' + xhr.status + 'statusText : ' + statusText + 'err : ' + err);
+            alert("Error:" + xhr.status);
         }
     });// end ajax call 
 }
