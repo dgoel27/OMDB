@@ -219,7 +219,7 @@ let getAllDetails = () => {
 
             if((response.Error != '' && response.Error != undefined) || response.Response == 'False' || response == null) {
                 $('#search-button').attr('disabled','disabled');
-                alert(response.Response);
+                alert(response.Error);
             } else {
                 $('#search-button').removeAttr('disabled');
             }
